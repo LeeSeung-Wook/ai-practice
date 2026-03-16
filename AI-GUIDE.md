@@ -9,7 +9,7 @@
 ## 2. 참조 규칙 (Memory Load)
 아래 파일을 읽고 규칙을 반드시 준수한다.
 
-- **컨벤션**: `.ai/rules/common-rule.md`
+- **컨벤션**: `.ai/rules/*.md`
 
 ---
 
