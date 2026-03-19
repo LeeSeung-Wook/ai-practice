@@ -41,8 +41,24 @@ public class UserRequest {
 
     @Data
     public static class Login {
+        @NotBlank(message = "유저네임은 필수입니다")
         private String username;
+        @NotBlank(message = "비밀번호는 필수입니다")
         private String password;
+    }
+
+    @Data
+    public static class Update {
+        private String password; // 비밀번호 (수정 시 선택 사항)
+
+        @NotBlank(message = "이메일은 필수입니다")
+        @Email(message = "올바른 이메일 형식이 아닙니다")
+        private String email;
+
+        private String postcode;
+        private String address;
+        private String detailAddress;
+        private String extraAddress;
     }
 
 }

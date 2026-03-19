@@ -59,7 +59,7 @@ com.example.demo/
 
 ## 8. H2 Console Configuration (Jakarta EE)
 
-Spring Boot 3.x/4.x 이상(Jakarta EE)에서는 H2 콘솔을 정적 리소스로 오인하여 발생하는 `No static resource` 오류를 방지하기 위해 반드시 `JakartaWebServlet`을 사용하여 수동으로 등록한다.
+Spring Boot 4.x 이상(Jakarta EE)에서는 H2 콘솔을 정적 리소스로 오인하여 발생하는 `No static resource` 오류를 방지하기 위해 반드시 `JakartaWebServlet`을 사용하여 수동으로 등록한다.
 
 - `ServletRegistrationBean<JakartaWebServlet>`을 사용하여 `/h2-console/*` 경로를 매핑한다.
 - `setLoadOnStartup(1)`을 설정하여 서버 기동 시 즉시 로드되도록 한다.

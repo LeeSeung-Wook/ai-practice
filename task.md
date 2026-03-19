@@ -1,6 +1,7 @@
 # 상세 개발 태스크 (Detailed Tasks)
 
 ## Phase 1: 기반 구조 및 핵심 도메인 설계 (Infrastructure & Core Domain)
+
 - [x] **T-1.1 프로젝트 초기 설정**
   - [x] Spring Boot 3.x, Java 21 설정 확인
   - [x] Dependencies 설정 (Spring Data JPA, H2, Mustache, Validation, Lombok)
@@ -19,25 +20,27 @@
   - [x] Bootstrap 등을 활용한 기본 레이아웃 템플릿 구조화
 
 ## Phase 2: 회원 인증 시스템 (Membership System)
-- [ ] **T-2.1 회원가입 기능 및 화면 구현**
-  - [ ] `frontend-design` 스킬을 활용한 회원가입 폼 (`join-form.mustache`) 구현
-  - [ ] `UserRequest.JoinDTO` 구현 및 유효성 검사 적용
-  - [ ] 아이디 중복 체크 API 구현 및 서비스 로직 작성
-  - [ ] 비밀번호 암호화 저장 처리 (BCrypt 적용 권장)
-- [ ] **T-2.2 로그인/로그아웃 기능 및 화면 구현**
-  - [ ] `frontend-design` 스킬을 활용한 로그인 폼 (`login-form.mustache`) 구현
-  - [ ] `UserRequest.LoginDTO` 구현
-  - [ ] 세션(`HttpSession`)을 이용한 인증 정보 관리
-  - [ ] 로그인 성공/실패 시나리오 대응 및 리다이렉션 처리
-- [ ] **T-2.3 회원 탈퇴 및 마이페이지 화면 구현**
-  - [ ] `frontend-design` 스킬을 활용한 회원 정보 수정 화면 (`update-form.mustache`) 구현
-  - [ ] 회원 탈퇴 API 구현
-  - [ ] 탈퇴 시 해당 사용자가 작성한 게시글 및 댓글 일괄 처리 (Soft delete 또는 Cascade delete 전략 결정)
+
+- [x] **T-2.1 회원가입 기능 및 화면 구현 (학습 및 검증 중심)**
+  - [x] **[Step 1: AJAX 중복 체크]** 아이디 중복 체크 API 및 프론트엔드 비동기 통신 구현 (Fetch API 흐름 학습 및 문서화)
+  - [x] **[Step 2: AOP 유효성 검사]** `UserRequest.JoinDTO` 구현 및 AOP를 활용한 공통 유효성 검사(Validation) 로직 이해 및 적용
+  - [x] **[Step 3: BCrypt 암호화]** BCrypt 라이브러리 추가 및 해시 암호화 원리(Salting) 학습 후 회원정보 저장 구현
+  - [x] **[Finalize]** `frontend-design` 스킬을 활용하여 `join-form.mustache` 최종 디자인 적용 및 전체 가입 프로세스 검증
+- [x] **T-2.2 로그인/로그아웃 기능 및 화면 구현**
+  - [x] `frontend-design` 스킬을 활용한 로그인 폼 (`login-form.mustache`) 구현
+  - [x] `UserRequest.Login` 구현 (login reqDTO)
+  - [x] 세션(`HttpSession`)을 이용한 인증 정보 관리
+  - [x] 로그인 성공/실패 시나리오 대응 및 리다이렉션 처리
+- [x] **T-2.3 회원 탈퇴 및 마이페이지 화면 구현**
+  - [x] `frontend-design` 스킬을 활용한 회원 정보 수정 화면 (`update-form.mustache`) 구현 (마이페이지 겸용)
+  - [x] 회원 탈퇴 API 구현
+  - [x] 탈퇴 시 해당 사용자가 작성한 게시글 및 댓글 일괄 처리 (명시적 Cascade Delete 적용)
 - [ ] **T-2.4 권한 관리 및 보안**
   - [ ] 인증이 필요한 페이지 접근 제어를 위한 Interceptor 구현
   - [ ] 세션 체크 로직 공통화
 
 ## Phase 3: 게시글 관리 시스템 (Core Blog Features)
+
 - [ ] **T-3.1 게시글 CRUD 기능 및 화면 구현**
   - [ ] `frontend-design` 스킬을 활용한 게시글 목록 화면 (`list.mustache`), 상세 화면 (`detail.mustache`), 작성 화면 (`save-form.mustache`), 수정 화면 (`update-form.mustache`) 구현
   - [ ] 게시글 목록 조회 (`BoardRepository.findAll`)
@@ -53,6 +56,7 @@
   - [ ] 상세 페이지에서 작성자 프로필 정보 노출
 
 ## Phase 4: 댓글 및 상호작용 (Interaction Features)
+
 - [ ] **T-4.1 댓글 작성 기능 및 화면 연동**
   - [ ] `frontend-design` 스킬을 활용한 댓글 입력 폼 및 댓글 목록 UI (`detail.mustache` 내) 구현
   - [ ] `ReplyRequest.SaveDTO` 구현
@@ -65,6 +69,7 @@
   - [ ] 댓글 개수 표시 기능 추가
 
 ## Phase 5: 예외 처리 및 안정화 (Polishing & Validation)
+
 - [ ] **T-5.1 글로벌 예외 처리 (GlobalExceptionHandler)**
   - [ ] `@ControllerAdvice`를 이용한 공통 에러 페이지 처리
   - [ ] REST API 에러 응답(`Resp.fail`) 처리 로직 강화

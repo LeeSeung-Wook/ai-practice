@@ -1,5 +1,31 @@
 {{> layout/header}}
 
-<h1>로그인페이지</h1>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0" style="border-radius: 15px;">
+                <div class="card-body p-5">
+                    <h3 class="text-center mb-4" style="font-weight: 700;">로그인</h3>
+                    <form action="/login" method="post">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">아이디</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="아이디를 입력하세요" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="password" class="form-label">비밀번호</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력하세요" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg" style="border-radius: 10px; background-color: var(--color-primary, #197fe6); border: none;">로그인</button>
+                        </div>
+                    </form>
+                    <div class="text-center mt-4">
+                        <p class="text-muted small">계정이 없으신가요? <a href="/join-form" class="text-decoration-none" style="color: var(--color-primary, #197fe6);">회원가입</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {{> layout/footer}}
