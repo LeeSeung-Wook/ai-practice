@@ -37,13 +37,7 @@ com.example.demo/
 - 조회 메서드는 `@Transactional(readOnly = true)`를 사용한다.
 - 쓰기 메서드(save, update, delete)는 `@Transactional`을 사용한다.
 - DTO는 Service 레이어에서 변환하며, Entity를 Controller로 노출하지 않는다.
-
-## 5. Controller Rules
-
-- SSR(@Controller)과 REST(@RestController)를 명확히 분리한다.
-- REST API 경로는 `/api`로 시작한다.
-- SSR은 `HttpSession`을 사용하고 `String`을 반환한다.
-- REST는 `Resp.ok()` 또는 `Resp.fail()`을 사용한다.
+- 화면(UI) 구성에 필요한 모든 데이터를 Service에서 하나의 DTO에 담아 컨트롤러로 반환한다.
 
 ## 6. DTO Rules
 

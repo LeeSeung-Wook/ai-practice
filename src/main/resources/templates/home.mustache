@@ -1,13 +1,50 @@
 {{> layout/header}}
 
-<div class="container mt-3">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>메인 페이지</h1>
-            <hr>
-            <p>블로그 서비스에 오신 것을 환영합니다.</p>
+<div class="container mt-5">
+    <div class="row align-items-center py-5">
+        <div class="col-lg-6 text-start">
+            <h1 class="display-4 fw-bold mb-3" style="color: var(--primary-color);">
+                나만의 이야기를 <br><span class="text-accent" style="color: var(--accent-color);">기록하고 공유하세요</span>
+            </h1>
+            <p class="lead text-muted mb-4">
+                생각을 정리하고, 지식을 나누며 성장하는 공간입니다. <br>
+                지금 바로 블로그 서비스를 시작해보세요.
+            </p>
+            <div class="d-flex gap-3">
+                <a href="/board/list" class="btn btn-primary btn-lg px-4 rounded-pill">
+                    <i class="fa-solid fa-list-ul me-2"></i>게시글 보기
+                </a>
+                {{^sessionUser}}
+                <a href="/join-form" class="btn btn-outline-primary btn-lg px-4 rounded-pill">
+                    <i class="fa-solid fa-user-plus me-2"></i>회원가입
+                </a>
+                {{/sessionUser}}
+            </div>
+        </div>
+        <div class="col-lg-6 d-none d-lg-block">
+            <div class="hero-image-container position-relative">
+                <div class="hero-blob position-absolute top-50 start-50 translate-middle"></div>
+                <img src="https://img.freepik.com/free-vector/blogging-concept-illustration_114360-1038.jpg" alt="Hero Image" class="img-fluid position-relative z-1" style="max-width: 80%;">
+            </div>
         </div>
     </div>
 </div>
+
+<style>
+    .hero-blob {
+        width: 400px;
+        height: 400px;
+        background: linear-gradient(135deg, oklch(90% 0.1 270), oklch(90% 0.1 40));
+        filter: blur(60px);
+        border-radius: 50%;
+        opacity: 0.3;
+        animation: float 10s infinite alternate;
+    }
+
+    @keyframes float {
+        0% { transform: translate(-50%, -50%) scale(1); }
+        100% { transform: translate(-45%, -55%) scale(1.1); }
+    }
+</style>
 
 {{> layout/footer}}

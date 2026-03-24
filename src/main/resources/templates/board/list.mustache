@@ -1,32 +1,109 @@
 {{> layout/header}}
 
-<div class="container mt-3">
+<div class="container mt-4">
     <div class="row">
         <div class="col-md-12">
-            <h1>게시글 목록</h1>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h1 class="h2 text-primary-emphasis fw-bold"><i class="fa-solid fa-list me-2"></i>게시글 목록</h1>
+                <div class="d-flex gap-2">
+                    <form action="/" method="get" class="d-flex gap-2 align-items-center">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-0 shadow-sm rounded-start-pill ps-3">
+                                <i class="fa-solid fa-magnifying-glass text-muted small"></i>
+                            </span>
+                            <input type="text" name="keyword" class="form-control border-0 shadow-sm rounded-end-pill pe-3 py-2" placeholder="제목 검색..." value="{{model.keyword}}" style="width: 250px;">
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary rounded-pill px-4 shadow-sm border-0 bg-white">
+                            검색
+                        </button>
+                    </form>
+                    {{#sessionUser}}
+                    <a href="/board/save-form" class="btn btn-accent rounded-pill px-4 shadow-sm"><i class="fa-solid fa-pen-nib me-1"></i>글쓰기</a>
+                    {{/sessionUser}}
+                </div>
+            </div>
             <hr>
-            <table class="table table-hover">
-                <thead class="table-dark">
-                    <tr>
-                        <th>번호</th>
-                        <th>제목</th>
-                        <th>작성자</th>
-                        <th>상세보기</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#boards}}
-                    <tr>
-                        <td>{{id}}</td>
-                        <td>{{title}}</td>
-                        <td>{{username}}</td>
-                        <td><a href="/board/{{id}}" class="btn btn-primary btn-sm">상세보기</a></td>
-                    </tr>
-                    {{/boards}}
-                </tbody>
-            </table>
+            <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
+                <table class="table table-hover mb-0">
+                    <thead class="bg-primary text-white" style="background-color: var(--primary-color) !important;">
+                        <tr>
+                            <th class="px-4 py-3">번호</th>
+                            <th class="py-3">제목</th>
+                            <th class="py-3">작성자</th>
+                            <th class="text-center py-3">액션</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#model.boards}}
+                        <tr class="align-middle">
+                            <td class="px-4 text-muted">{{id}}</td>
+                            <td class="fw-medium text-dark">{{title}}</td>
+                            <td><span class="badge rounded-pill bg-light text-dark px-3">{{username}}</span></td>
+                            <td class="text-center">
+                                <a href="/board/{{id}}" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                                    <i class="fa-solid fa-magnifying-glass me-1"></i>상세보기
+                                </a>
+                            </td>
+                        </tr>
+                        {{/model.boards}}
+                        {{^model.boards}}
+                        <tr>
+                            <td colspan="4" class="text-center py-5 text-muted">
+                                <i class="fa-solid fa-circle-exclamation d-block mb-3 h3 opacity-50"></i>
+                                검색 결과가 없습니다.
+                            </td>
+                        </tr>
+                        {{/model.boards}}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 페이징 버튼 추가 -->
+            <nav class="mt-5">
+                <ul class="pagination justify-content-center gap-1">
+                    <li class="page-item {{#model.isFirst}}disabled{{/model.isFirst}}">
+                        <a class="page-link border-0 rounded-circle shadow-sm" href="/?page={{model.prevPage}}&keyword={{model.keyword}}" aria-label="Previous">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </a>
+                    </li>
+                    
+                    {{#model.pageNumbers}}
+                    <li class="page-item">
+                        <a class="page-link border-0 rounded-circle shadow-sm {{#active}}active bg-primary text-white{{/active}}" href="/?page={{number}}&keyword={{model.keyword}}" style="{{#active}}background-color: var(--primary-color) !important;{{/active}}">
+                            {{number}}
+                        </a>
+                    </li>
+                    {{/model.pageNumbers}}
+
+                    <li class="page-item {{#model.isLast}}disabled{{/model.isLast}}">
+                        <a class="page-link border-0 rounded-circle shadow-sm" href="/?page={{model.nextPage}}&keyword={{model.keyword}}" aria-label="Next">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
+
+<style>
+    .page-link {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-color);
+        transition: all 0.2s ease;
+    }
+    .page-link:hover {
+        background-color: var(--primary-color);
+        color: white;
+        transform: translateY(-2px);
+    }
+    .table-hover tbody tr:hover {
+        background-color: oklch(95% 0.02 270);
+    }
+</style>
 
 {{> layout/footer}}

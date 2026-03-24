@@ -1,28 +1,16 @@
 {{> layout/header}}
 
 <style>
-    :root {
-        --color-primary: #197fe6;
-        --radius-base: 12px;
-        --shadow-base: 0 4px 20px rgba(0,0,0,0.05);
-        --font-family-base: 'Plus Jakarta Sans', 'Pretendard', sans-serif;
-    }
-
-    body {
-        font-family: var(--font-family-base);
-        background-color: #f8f9fa;
-    }
-
     .join-card {
         border: none;
-        border-radius: var(--radius-base);
-        box-shadow: var(--shadow-base);
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         overflow: hidden;
     }
 
     .join-card .card-header {
-        background-color: var(--color-white);
-        border-bottom: 1px solid #eee;
+        background-color: white;
+        border-bottom: 1px solid oklch(90% 0.01 60);
         padding: 1.5rem;
     }
 
@@ -32,41 +20,30 @@
 
     .form-label {
         font-weight: 500;
-        color: #495057;
+        color: var(--text-color);
     }
 
     .form-control {
         border-radius: 8px;
         padding: 0.6rem 1rem;
-        border: 1px solid #dee2e6;
+        border: 1px solid oklch(90% 0.01 60);
     }
 
     .form-control:focus {
-        border-color: var(--color-primary);
-        box-shadow: 0 0 0 0.25rem rgba(25, 127, 230, 0.1);
-    }
-
-    .btn-primary {
-        background-color: var(--color-primary);
-        border: none;
-        border-radius: 8px;
-        padding: 0.7rem;
-        font-weight: 600;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.25rem oklch(45% 0.15 270 / 0.1);
     }
 
     .btn-outline-primary {
-        border-color: var(--color-primary);
-        color: var(--color-primary);
+        border-color: var(--primary-color);
+        color: var(--primary-color);
         border-radius: 8px;
     }
 
     .btn-outline-primary:hover {
-        background-color: var(--color-primary);
-        border-color: var(--color-primary);
-    }
-
-    .form-text {
-        font-size: 0.85rem;
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        color: white;
     }
 </style>
 
